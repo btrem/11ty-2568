@@ -12,7 +12,7 @@ module.exports = (eleventyConfig, pluginConfig = {}) => {
         throw new Error(`"${key}" not found in ${inputPath}`);
       }
       const postKey = post.data[key];
-      if (ids.has(postKey)) {
+      if (ids.has(postKey) && inputPath != ids.get(postKey)) {
         throw new Error(`Duplicate "${key}" found ("${postKey}"): ${inputPath} <=> ${ids.get(postKey)}`);
       }
       ids.set(postKey, inputPath);
